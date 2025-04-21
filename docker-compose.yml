@@ -1,0 +1,31 @@
+services:
+  anythingllm:
+    hostname: anythingllm
+    container_name: anythingllm
+    build:
+      context: ./docker/dockerfile/anythingllm
+      dockerfile: dockerfile
+    env_file:
+      - ./env/anythingllm-docker.env
+    ports:
+      - 3001:3001
+    volumes:
+      - ./docker/volume/anythingllm:/app/server/storage
+    cap_add:
+      - SYS_ADMIN
+    stdin_open: true
+    tty: true
+  ollama:
+    hostname: ollama
+    container_name: ollama
+    build:
+      context: ./docker/dockerfile/ollama
+      dockerfile: dockerfile
+    env_file:
+      - ./env/ollama-docker.env
+    ports:
+      - 11434:11434
+    volumes:
+      - ./docker/volume/ollama:/root/.ollama
+    stdin_open: true
+    tty: true

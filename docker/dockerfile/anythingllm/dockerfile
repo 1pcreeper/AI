@@ -1,0 +1,2 @@
+FROM mintplexlabs/anythingllm:1.8
+EXPOSE 3001
