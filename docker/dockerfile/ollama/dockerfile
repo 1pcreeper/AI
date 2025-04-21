@@ -1,2 +1,6 @@
 FROM ollama/ollama:0.6.6
+COPY /dist /app
 EXPOSE 11434
+RUN chmod +x /app/cli/serve-model.sh
+WORKDIR /app/cli
+RUN bash ./serve-model.sh

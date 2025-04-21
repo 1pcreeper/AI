@@ -29,3 +29,11 @@ services:
       - ./docker/volume/ollama:/root/.ollama
     stdin_open: true
     tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    runtime: nvidia
